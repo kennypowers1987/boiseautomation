@@ -1,0 +1,21 @@
+{
+  "name": "boiseautomation",
+  "version": "1.0.0",
+  "description": "Engineering-led automation and AI integrations based in Boise, Idaho.",
+  "main": "generate-email-preview.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kennypowers1987/boiseautomation.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "module",
+  "bugs": {
+    "url": "https://github.com/kennypowers1987/boiseautomation/issues"
+  },
+  "homepage": "https://github.com/kennypowers1987/boiseautomation#readme"
+}
