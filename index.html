@@ -324,13 +324,9 @@
                 return false;
             }
 
-            // TODO: Paste your Zapier Catch Hook URL here
-            const ZAPIER_WEBHOOK_URL = ""; 
-
-            if (!ZAPIER_WEBHOOK_URL) {
-                alert("Please configure the Zapier Webhook URL in index.html first.");
-                return;
-            }
+            // Instead of hardcoding the Zapier URL, we send the data to our secure Cloudflare Function
+            // The function securely stores the Zapier URL and proxies the request.
+            const CLOUDFLARE_FUNCTION_URL = "/api/submit"; 
 
             submitBtn.textContent = "Sending...";
             submitBtn.disabled = true;
@@ -341,10 +337,17 @@
             delete data.bot_field;
 
             try {
-                await fetch(ZAPIER_WEBHOOK_URL, {
+                const response = await fetch(CLOUDFLARE_FUNCTION_URL, {
                     method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
                     body: JSON.stringify(data)
                 });
+                
+                if (!response.ok) {
+                    throw new Error("Server rejected the submission.");
+                }
                 
                 form.reset();
                 submitBtn.textContent = "Transmission Sent!";
