@@ -26,16 +26,17 @@ This site is structured to be deployed using **Cloudflare Pages**. This allows u
 5. In the build settings, leave the build command and build directory blank (the root folder is correct).
 6. Click **Save and Deploy**.
 
-### Securing the Form (Zapier integration)
-The form submits to a secure Cloudflare Function (`/functions/api/submit.js`), which acts as a proxy to Zapier. 
+### Securing the Form (Zapier integration & SendGrid Auto-Reply)
+The form submits to a secure Cloudflare Function (`/functions/api/submit.js`), which acts as a proxy to Zapier and triggers a branded SendGrid auto-reply.
 
-1. Go to **Zapier** and create a new **"Webhooks by Zapier"** trigger.
-2. Select **"Catch Hook"** and copy the generated Webhook URL.
+1. Go to **Zapier** and create a new **"Webhooks by Zapier"** trigger. Select **"Catch Hook"** and copy the generated Webhook URL.
+2. Go to **SendGrid** and generate a new API key with Mail Send permissions. Ensure you have a verified Sender Identity (the email address you will send *from*).
 3. Go back to your Cloudflare Pages project settings: **Settings** -> **Environment variables**.
-4. Add a new variable:
-   * **Variable name:** `ZAPIER_WEBHOOK_URL`
-   * **Value:** *(Paste your Zapier webhook URL here)*
-5. Click **Save** and trigger a new deployment in Cloudflare so the variable takes effect.
+4. Add the following variables:
+   * **`ZAPIER_WEBHOOK_URL`**: *(Paste your Zapier webhook URL here)*
+   * **`SENDGRID_API_KEY`**: *(Paste your SendGrid API key here)*
+   * **`SENDGRID_FROM_EMAIL`**: *(Paste your verified SendGrid email here, e.g., hello@boiseautomation.com)*
+5. Click **Save** and trigger a new deployment in Cloudflare so the variables take effect.
 
 ### Cloudflare Security (Blocking Bots/Spam)
 Once your site is running through Cloudflare, enable bot protection:
