@@ -30,7 +30,7 @@ This site is structured to be deployed seamlessly using **GitHub Pages**.
 Before launching or driving traffic to this site, you need to update the following placeholder elements in `index.html`:
 
 - [ ] **Contact Form Embed:** Replace the placeholder text in the "Interactive Scheduling Block" (around line 256) with your actual Calendly or SavvyCal embed code.
-- [ ] **Contact Form Backend:** The HTML form uses a honeypot (`bot_field`) to block spam, but the `action="#"` attribute on the `<form>` tag needs to be pointed to a real form processor to actually receive emails. **Recommendation:** Use [Formspree](https://formspree.io/) or [Web3Forms](https://web3forms.com/). They are free, require zero backend setup, and work perfectly with static sites—just replace `action="#"` with the endpoint URL they give you.
+- [ ] **Contact Form Backend:** You can capture form submissions straight to a Google Sheet using Zapier. Create a "Catch Hook" trigger in Zapier, map it to a Google Sheets action, and then paste your Catch Hook URL into the `ZAPIER_WEBHOOK_URL` variable at the bottom of `index.html`. 
 - [ ] **Social Links:** Update the `href` attributes in the footer for LinkedIn, GitHub, and Twitter.
 - [ ] **Custom Domain Setup:** Once GitHub Pages is active, add your custom domain (e.g., `boiseautomation.com`) in the GitHub Pages settings and configure your DNS records (A/CNAME) with your registrar.
 - [ ] **Cloudflare Security:** Set up Cloudflare in front of the site to manage DNS and configure WAF (Web Application Firewall) rules to block or challenge all traffic originating from outside the US.
