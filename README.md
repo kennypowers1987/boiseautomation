@@ -52,5 +52,5 @@ Once your site is running through Cloudflare, enable bot protection:
 Before launching or driving traffic to this site, you need to update the following placeholder elements in `index.html`:
 
 - [ ] **Contact Form Embed:** Replace the placeholder text in the "Interactive Scheduling Block" (around line 256) with your actual Calendly or SavvyCal embed code.
-- [ ] **Social Links:** Update the `href` attributes in the footer for LinkedIn, GitHub, and Twitter.
+- [ ] **Social Links:** Update the `href` attribute in the footer for LinkedIn.
 - [ ] **Custom Domain Setup:** Add your custom domain (e.g., `boiseautomation.com`) in Cloudflare Pages and update your DNS records.
