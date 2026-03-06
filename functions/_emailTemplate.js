@@ -31,7 +31,7 @@ export function getEmailTemplate(userName) {
             Boise Automation LLC
           </p>
           <p style="color: #64748b; font-size: 12px; margin: 0;">
-            Enterprise-Grade Systems &bull; Trailhead Member<br>
+            Empowering Boise Businesses with Local Enterprise Solutions &bull; Trailhead Member<br>
             408 S 8th St, Boise, ID
           </p>
         </div>
