@@ -57,7 +57,7 @@
         
         <h1 class="text-5xl md:text-7xl font-bold mb-6 tracking-tight leading-tight">
             Boise Local Engineering, <br />
-            <span class="gradient-text">Automation & </span><span class="text-[#cc0000]">AI</span>
+            <span class="gradient-text">Automation </span><span class="text-white">& </span><span class="text-[#cc0000]">AI</span>
         </h1>
         
         <p class="text-slate-400 max-w-2xl text-lg md:text-xl mb-10 leading-relaxed font-light">
@@ -91,8 +91,10 @@
                         </svg>
                     </div>
                     <h3 class="font-semibold text-xl text-slate-100 mb-3">Custom SaaS & Mobile Apps</h3>
-                    <p class="text-slate-400 leading-relaxed">
-                        Scalable, high-performance software and mobile architectures tailored to your operational workflows. We typically build on Linux and DigitalOcean stacks, but bring deep deployment experience across all major clouds (AWS, GCP, Azure). Fully managed locally from the Treasure Valley.
+                    <p class="text-slate-400 leading-relaxed space-y-4">
+                        <span class="block">Scalable, high-performance software and mobile architectures tailored to your operational workflows.</span>
+                        <span class="block">We typically build on Linux and DigitalOcean stacks, but bring deep deployment experience across all major clouds (AWS, GCP, Azure).</span>
+                        <span class="block">Fully managed locally from the Treasure Valley.</span>
                     </p>
                 </div>
                 
@@ -104,8 +106,10 @@
                         </svg>
                     </div>
                     <h3 class="font-semibold text-xl text-slate-100 mb-3">System Integrations</h3>
-                    <p class="text-slate-400 leading-relaxed">
-                        Stop fighting manual data entry between the field and the office. We develop custom middleware and automated pipelines for Procore, Jobber, and any API-enabled platform. Specialized in automated SMS workflows, real-time dispatch synchronization, and custom field-to-office integrations.
+                    <p class="text-slate-400 leading-relaxed space-y-4">
+                        <span class="block">Stop fighting manual data entry between the field and the office.</span>
+                        <span class="block">We develop custom middleware and automated pipelines for Procore, Jobber, and any API-enabled platform.</span>
+                        <span class="block">Specialized in automated SMS workflows, real-time dispatch synchronization, and custom field-to-office integrations.</span>
                     </p>
                 </div>
                 
@@ -117,8 +121,10 @@
                         </svg>
                     </div>
                     <h3 class="font-semibold text-xl text-slate-100 mb-3">Industrial IoT</h3>
-                    <p class="text-slate-400 leading-relaxed">
-                        Remote equipment monitoring and facility automation via MQTT. Monitor remote storage sheds, environmental conditions, and heavy equipment directly from your phone. Our local team handles everything from the physical hardware wiring to the custom software dashboards designed for Idaho's agriculture and construction sectors.
+                    <p class="text-slate-400 leading-relaxed space-y-4">
+                        <span class="block">Remote equipment monitoring and facility automation via MQTT.</span>
+                        <span class="block">Monitor remote storage sheds, environmental conditions, and heavy equipment directly from your phone.</span>
+                        <span class="block">Our local team handles everything from the physical hardware wiring to the custom software dashboards designed for Idaho's agriculture and construction sectors.</span>
                     </p>
                 </div>
             </div>
@@ -153,50 +159,45 @@
             </div>
             <div class="relative">
                 <div class="absolute -inset-1 bg-gradient-to-r from-sky-500 to-indigo-500 rounded-xl blur opacity-25"></div>
-                <div class="bg-slate-900 rounded-xl p-8 border border-slate-700 relative shadow-2xl overflow-hidden">
-                    <div class="flex space-x-2 mb-6 border-b border-slate-800 pb-4">
-                        <div class="w-3 h-3 bg-slate-700 rounded-full"></div>
-                        <div class="w-3 h-3 bg-slate-700 rounded-full"></div>
-                        <div class="w-3 h-3 bg-slate-700 rounded-full"></div>
+                <div class="bg-slate-900 rounded-xl p-6 border border-slate-700 relative shadow-2xl flex flex-col space-y-4">
+                    <!-- Header -->
+                    <div class="flex items-center justify-between border-b border-slate-800 pb-3 mb-2">
+                        <div class="flex space-x-2">
+                            <div class="w-3 h-3 bg-slate-700 rounded-full"></div>
+                            <div class="w-3 h-3 bg-slate-700 rounded-full"></div>
+                            <div class="w-3 h-3 bg-slate-700 rounded-full"></div>
+                        </div>
+                        <span class="text-xs text-slate-500 font-mono tracking-widest uppercase">Agent Terminal</span>
                     </div>
-                    <div class="space-y-4 font-mono text-xs md:text-sm overflow-x-auto pb-2 whitespace-nowrap">
-                        <div class="flex text-slate-500 whitespace-nowrap">
-                            <span class="mr-4">01</span>
-                            <span class="text-sky-400">import</span> { Server } <span class="text-sky-400">from</span> '@modelcontextprotocol/sdk/server';
+
+                    <!-- User Message -->
+                    <div class="flex justify-end">
+                        <div class="bg-slate-800 text-slate-200 text-sm p-3 rounded-l-lg rounded-tr-lg max-w-[85%] shadow-sm">
+                            What is the current inventory of Part #8492 in the Procore DB?
                         </div>
-                        <div class="flex text-slate-500">
-                            <span class="mr-4">02</span>
-                            <span class="text-sky-400">import</span> { PostgresBridge } <span class="text-sky-400">from</span> './internal-db';
+                    </div>
+
+                    <!-- System Logs -->
+                    <div class="flex flex-col space-y-1 my-2 pl-2 border-l-2 border-slate-700">
+                        <div class="flex items-center text-xs font-mono text-slate-500">
+                            <svg class="w-3 h-3 mr-2 animate-spin text-sky-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"><circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle><path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path></svg>
+                            > Authenticating via Boise Enterprise MCP...
                         </div>
-                        <div class="flex text-slate-500">
-                            <span class="mr-4">03</span>
+                        <div class="flex items-center text-xs font-mono text-green-500 opacity-80">
+                            <svg class="w-3 h-3 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+                            > Querying secure internal PostgreSQL...
                         </div>
-                        <div class="flex text-slate-500">
-                            <span class="mr-4">04</span>
-                            <span class="text-indigo-400">const</span> server = <span class="text-sky-400">new</span> Server({
-                        </div>
-                        <div class="flex text-slate-500">
-                            <span class="mr-4">05</span>
-                            <span class="text-slate-300 ml-4">name:</span> <span class="text-green-400">'boise-enterprise-mcp'</span>,
-                        </div>
-                        <div class="flex text-slate-500">
-                            <span class="mr-4">06</span>
-                            <span class="text-slate-300 ml-4">version:</span> <span class="text-green-400">'1.0.0'</span>
-                        </div>
-                        <div class="flex text-slate-500">
-                            <span class="mr-4">07</span>
-                            });
-                        </div>
-                        <div class="flex text-slate-500">
-                            <span class="mr-4">08</span>
-                        </div>
-                        <div class="flex text-slate-500">
-                            <span class="mr-4">09</span>
-                            <span class="text-slate-400">// Establishing secure context stream</span>
-                        </div>
-                        <div class="flex text-slate-500">
-                            <span class="mr-4">10</span>
-                            <span class="text-indigo-400">await</span> server.connect(PostgresBridge.init());
+                    </div>
+
+                    <!-- AI Response -->
+                    <div class="flex justify-start">
+                        <div class="bg-sky-500/10 border border-sky-500/20 text-slate-200 text-sm p-4 rounded-r-lg rounded-tl-lg max-w-[90%] shadow-sm flex items-start">
+                            <div class="mt-1 mr-3 flex-shrink-0">
+                                <svg class="w-5 h-5 text-sky-400" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
+                            </div>
+                            <div>
+                                You currently have <strong class="text-white">42 units</strong> of Part #8492 in the main Boise warehouse. Would you like me to draft a purchase order for more?
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -242,13 +243,55 @@
             </div>
 
             <div class="max-w-4xl mx-auto mt-20 text-center border-t border-slate-800 pt-16">
-                <h3 class="text-2xl font-semibold mb-6 text-slate-200">For Local Entrepreneurs</h3>
+                <h2 class="text-3xl md:text-4xl font-bold mb-6">For Local Entrepreneurs</h2>
                 <p class="text-slate-400 text-lg leading-relaxed mb-6">
                     We believe in empowering non-traditional developers. If you are a local founder using Claude, Cursor, or other AI tools to fast-track your own ideas, we want to support you. 
                 </p>
                 <p class="text-slate-400 text-lg leading-relaxed">
                     We offer on-demand code reviews, architecture guidance, and security consultations on a case-by-case basis to help you get over the finish line. <strong class="text-slate-100">Whether we build it or you build it, we believe firmly that your IP always remains yours.</strong>
                 </p>
+            </div>
+
+            <div class="max-w-4xl mx-auto mt-20 text-center border-t border-slate-800 pt-16">
+                <h2 class="text-3xl md:text-4xl font-bold mb-6">For Local Developers</h2>
+                <p class="text-slate-400 text-lg leading-relaxed mb-6">
+                    We are actively seeking local Boise talent. We want seasoned experts, but we also believe in fostering the next generation of engineers—including early-career and self-taught developers.
+                </p>
+                <p class="text-slate-400 text-lg leading-relaxed mb-10">
+                    We believe AI is fundamentally changing how software is built, and we approach this shift with a balanced perspective. We embrace modern LLM tooling to accelerate development, while demanding a rigorous, deep understanding of the underlying code we deploy. It's about combining the leverage of new technology with the discipline of experienced engineering.
+                </p>
+                
+                <form id="developer-form" action="#" class="space-y-5 max-w-lg mx-auto text-left">
+                    <input type="hidden" name="form_type" value="developer_application">
+                    <div class="honey">
+                        <label>Do not fill this if you are human:</label>
+                        <input name="bot_field" type="text" tabindex="-1">
+                    </div>
+                    
+                    <div>
+                        <label class="block text-sm font-medium text-slate-300 mb-1.5">Full Name</label>
+                        <input type="text" name="name" required class="w-full bg-slate-900 border border-slate-700 rounded-md py-2.5 px-4 focus:ring-2 focus:ring-sky-500 focus:border-sky-500 outline-none transition-all text-slate-100 placeholder-slate-600">
+                    </div>
+                    
+                    <div>
+                        <label class="block text-sm font-medium text-slate-300 mb-1.5">Email</label>
+                        <input type="email" name="email" required class="w-full bg-slate-900 border border-slate-700 rounded-md py-2.5 px-4 focus:ring-2 focus:ring-sky-500 focus:border-sky-500 outline-none transition-all text-slate-100 placeholder-slate-600">
+                    </div>
+
+                    <div>
+                        <label class="block text-sm font-medium text-slate-300 mb-1.5">GitHub URL</label>
+                        <input type="url" name="github_url" required class="w-full bg-slate-900 border border-slate-700 rounded-md py-2.5 px-4 focus:ring-2 focus:ring-sky-500 focus:border-sky-500 outline-none transition-all text-slate-100 placeholder-slate-600" placeholder="https://github.com/username">
+                    </div>
+                    
+                    <div>
+                        <label class="block text-sm font-medium text-slate-300 mb-1.5">Tell us about yourself</label>
+                        <textarea name="message" required class="w-full bg-slate-900 border border-slate-700 rounded-md py-2.5 px-4 h-32 focus:ring-2 focus:ring-sky-500 focus:border-sky-500 outline-none transition-all text-slate-100 resize-none"></textarea>
+                    </div>
+                    
+                    <button type="submit" class="w-full bg-sky-500 text-white font-semibold py-3 rounded-md hover:bg-sky-400 transition-all shadow-lg shadow-sky-500/20">
+                        Submit Application
+                    </button>
+                </form>
             </div>
         </div>
     </section>
@@ -272,6 +315,7 @@
                 <!-- Contact Form -->
                 <div class="md:col-span-2 flex flex-col justify-center">
                     <form id="contact-form" action="#" class="space-y-5">
+                        <input type="hidden" name="form_type" value="consultation">
                         <div class="honey">
                             <label>Do not fill this if you are human:</label>
                             <input name="bot_field" type="text" tabindex="-1">
@@ -322,12 +366,13 @@
 
     <script>
         // Form Submission Logic
-        document.getElementById('contact-form').onsubmit = async function(e) {
+        async function handleFormSubmit(e) {
             e.preventDefault();
             
             const form = e.target;
             const submitBtn = form.querySelector('button[type="submit"]');
-            const botField = document.querySelector('input[name="bot_field"]').value;
+            const botField = form.querySelector('input[name="bot_field"]').value;
+            const originalBtnText = submitBtn.textContent;
             
             // Honeypot check
             if (botField !== "") {
@@ -366,7 +411,7 @@
                 submitBtn.classList.replace("hover:bg-sky-400", "hover:bg-green-400");
                 
                 setTimeout(() => {
-                    submitBtn.textContent = "Submit Inquiry";
+                    submitBtn.textContent = originalBtnText;
                     submitBtn.disabled = false;
                     submitBtn.classList.replace("bg-green-500", "bg-sky-500");
                     submitBtn.classList.replace("hover:bg-green-400", "hover:bg-sky-400");
@@ -375,10 +420,13 @@
             } catch (error) {
                 console.error('Error:', error);
                 alert("Failed to send. Please try again.");
-                submitBtn.textContent = "Submit Inquiry";
+                submitBtn.textContent = originalBtnText;
                 submitBtn.disabled = false;
             }
-        };
+        }
+
+        document.getElementById('contact-form').addEventListener('submit', handleFormSubmit);
+        document.getElementById('developer-form').addEventListener('submit', handleFormSubmit);
     </script>
 </body>
 </html>
