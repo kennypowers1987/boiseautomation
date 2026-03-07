@@ -1,4 +1,26 @@
-export function getEmailTemplate(userName) {
+export function getEmailTemplate(userName, type = "consultation") {
+  let messageContent = "";
+
+  if (type === "developer_application") {
+    messageContent = `
+        <p style="color: #cbd5e1; font-size: 16px; line-height: 1.6; margin-bottom: 20px;">
+          Thanks for applying to partner with us!
+        </p>
+        <p style="color: #cbd5e1; font-size: 16px; line-height: 1.6; margin-bottom: 32px;">
+          We have received your application and GitHub link. Our lead engineering team will review your profile and reach out soon with next steps. We're excited about the potential of building together.
+        </p>
+    `;
+  } else {
+    messageContent = `
+        <p style="color: #cbd5e1; font-size: 16px; line-height: 1.6; margin-bottom: 20px;">
+          We have received your technical consultation request. 
+        </p>
+        <p style="color: #cbd5e1; font-size: 16px; line-height: 1.6; margin-bottom: 32px;">
+          Our engineering team is currently reviewing your project overview. We will reach out shortly to schedule a discussion regarding your architectural requirements and potential implementations.
+        </p>
+    `;
+  }
+
   return `
 <!DOCTYPE html>
 <html>
@@ -18,13 +40,7 @@ export function getEmailTemplate(userName) {
           Hi ${userName},
         </p>
         
-        <p style="color: #cbd5e1; font-size: 16px; line-height: 1.6; margin-bottom: 20px;">
-          We have received your technical consultation request. 
-        </p>
-        
-        <p style="color: #cbd5e1; font-size: 16px; line-height: 1.6; margin-bottom: 32px;">
-          Our engineering team is currently reviewing your project overview. We will reach out shortly to schedule a discussion regarding your architectural requirements and potential implementations.
-        </p>
+        ${messageContent}
         
         <div style="padding-top: 24px; border-top: 1px solid #334155;">
           <p style="color: #94a3b8; font-size: 14px; font-weight: 600; margin: 0 0 4px 0;">

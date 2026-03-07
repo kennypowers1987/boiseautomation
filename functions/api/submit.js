@@ -30,8 +30,13 @@ export async function onRequestPost(context) {
     // 2. Send branded auto-reply via SendGrid (if configured)
     if (sendgridKey && sendgridFrom && requestData.email) {
       const userName = requestData.name ? requestData.name.split(' ')[0] : 'there';
+      const formType = requestData.form_type || 'consultation';
       
-      const emailHtml = getEmailTemplate(userName);
+      const emailHtml = getEmailTemplate(userName, formType);
+      
+      const subject = formType === 'developer_application' 
+        ? "Application Received - Boise Automation"
+        : "Consultation Request Received - Boise Automation";
 
       const sgResponse = await fetch('https://api.sendgrid.com/v3/mail/send', {
         method: 'POST',
@@ -44,7 +49,7 @@ export async function onRequestPost(context) {
             to: [{ email: requestData.email }]
           }],
           from: { email: sendgridFrom, name: "Boise Automation" },
-          subject: "Consultation Request Received - Boise Automation",
+          subject: subject,
           content: [{
             type: "text/html",
             value: emailHtml
