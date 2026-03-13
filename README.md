@@ -60,5 +60,4 @@ Once your site is running through Cloudflare, enable bot protection:
 
 Before launching or driving traffic to this site, you need to update the following placeholder elements in `index.html`:
 
-- [ ] **Social Links:** Update the `href` attribute in the footer for LinkedIn.
 - [ ] **Custom Domain Setup:** Add your custom domain (e.g., `boiseautomation.com`) in Cloudflare Pages and update your DNS records. 
