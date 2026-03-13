@@ -18,14 +18,15 @@ export async function onRequestPost(context) {
     const requestData = await context.request.json();
 
     // 1. Forward the data to Google Apps Script
-    // Google Apps Script requires a redirect-following fetch or specific content types sometimes, 
-    // but typically a simple POST with JSON payload works if the Web App is configured correctly.
+    // Google Apps Script expects redirect following and url-encoded or specific CORS headers
+    // The most robust way to hit a GAS Web App from Cloudflare is to allow redirects
     const googleResponse = await fetch(googleScriptUrl, {
       method: 'POST',
       body: JSON.stringify(requestData),
       headers: {
         'Content-Type': 'application/json'
-      }
+      },
+      redirect: 'follow'
     });
 
     if (!googleResponse.ok) {
