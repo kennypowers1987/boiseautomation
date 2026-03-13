@@ -432,7 +432,9 @@
                 });
                 
                 if (!response.ok) {
-                    throw new Error("Server rejected the submission.");
+                    const errorText = await response.text();
+                    console.error("Server response:", errorText);
+                    throw new Error("Server rejected the submission: " + errorText);
                 }
                 
                 form.reset();
