@@ -18,9 +18,14 @@ export async function onRequestPost(context) {
     const requestData = await context.request.json();
 
     // 1. Forward the data to Google Apps Script
+    // Google Apps Script requires a redirect-following fetch or specific content types sometimes, 
+    // but typically a simple POST with JSON payload works if the Web App is configured correctly.
     const googleResponse = await fetch(googleScriptUrl, {
       method: 'POST',
-      body: JSON.stringify(requestData)
+      body: JSON.stringify(requestData),
+      headers: {
+        'Content-Type': 'application/json'
+      }
     });
 
     if (!googleResponse.ok) {
