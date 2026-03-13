@@ -26,17 +26,43 @@ This site is structured to be deployed using **Cloudflare Pages**. This allows u
 5. In the build settings, leave the build command and build directory blank (the root folder is correct).
 6. Click **Save and Deploy**.
 
-### Securing the Form (Zapier integration & SendGrid Auto-Reply)
-The form submits to a secure Cloudflare Function (`/functions/api/submit.js`), which acts as a proxy to Zapier and triggers a branded SendGrid auto-reply.
+### Securing the Form (Google Sheets & SendGrid Auto-Reply)
+The form submits to a secure Cloudflare Function (`/functions/api/submit.js`), which acts as a proxy to a Google Apps Script (to log to Google Sheets) and triggers a branded SendGrid auto-reply.
 
-1. Go to **Zapier** and create a new **"Webhooks by Zapier"** trigger. Select **"Catch Hook"** and copy the generated Webhook URL.
-2. Go to **SendGrid** and generate a new API key with Mail Send permissions. Ensure you have a verified Sender Identity (the email address you will send *from*).
-3. Go back to your Cloudflare Pages project settings: **Settings** -> **Environment variables**.
-4. Add the following variables:
-   * **`ZAPIER_WEBHOOK_URL`**: *(Paste your Zapier webhook URL here)*
+#### Step 1: Set up Google Sheets (No Zapier required)
+1. Create a new Google Sheet.
+2. Click **Extensions > Apps Script**.
+3. Paste the following code:
+```javascript
+function doPost(e) {
+  try {
+    var data = JSON.parse(e.postData.contents);
+    var sheet = SpreadsheetApp.getActiveSpreadsheet().getActiveSheet();
+    var timestamp = new Date();
+    var formType = data.form_type || 'consultation';
+    
+    sheet.appendRow([timestamp, formType, data.name || '', data.email || '', data.message || '', data.github_url || '']);
+    
+    return ContentService.createTextOutput(JSON.stringify({"success": true}))
+      .setMimeType(ContentService.MimeType.JSON);
+  } catch(error) {
+    return ContentService.createTextOutput(JSON.stringify({"error": error.toString()}))
+      .setMimeType(ContentService.MimeType.JSON);
+  }
+}
+```
+4. Click **Deploy > New deployment**. Select **Web app**.
+5. Set "Execute as" to **Me** and "Who has access" to **Anyone**.
+6. Click **Deploy** and copy the **Web app URL**.
+
+#### Step 2: Configure Cloudflare & SendGrid
+1. Go to **SendGrid** and generate a new API key with Mail Send permissions. Ensure you have a verified Sender Identity.
+2. Go to your Cloudflare Pages project settings: **Settings** -> **Environment variables**.
+3. Add the following variables:
+   * **`ZAPIER_WEBHOOK_URL`**: *(Paste your Google Apps Script Web app URL here)*
    * **`SENDGRID_API_KEY`**: *(Paste your SendGrid API key here)*
    * **`SENDGRID_FROM_EMAIL`**: *(Paste your verified SendGrid email here, e.g., hello@boiseautomation.com)*
-5. Click **Save** and trigger a new deployment in Cloudflare so the variables take effect.
+4. Click **Save** and trigger a new deployment in Cloudflare so the variables take effect.
 
 ### Cloudflare Security (Blocking Bots/Spam)
 Once your site is running through Cloudflare, enable bot protection:
