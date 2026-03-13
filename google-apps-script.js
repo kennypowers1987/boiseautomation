@@ -21,6 +21,19 @@ function doPost(e) {
       data.message || '',
       data.github_url || '' // This will be empty for regular consultation forms
     ]);
+
+    // Send the branded HTML Auto-Reply Email
+    if (data.email && data.email_html && data.email_subject) {
+      // NOTE: Because you are using a different Google Workspace domain, 
+      // you must first add 'yourname@boiseautomation.com' as an alias in your Gmail Settings -> Accounts -> "Send mail as".
+      // Once verified in Gmail, you can pass it in the `from` property below using GmailApp.
+      GmailApp.sendEmail(data.email, data.email_subject, "", {
+        htmlBody: data.email_html,
+        name: "Boise Automation",
+        // Uncomment the line below and add your exact alias once it's verified in Gmail:
+        // from: "hello@boiseautomation.com"
+      });
+    }
     
     // Return a success response
     return ContentService.createTextOutput(JSON.stringify({"success": true}))
