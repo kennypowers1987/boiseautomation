@@ -41,7 +41,7 @@ export async function onRequestPost(context) {
       const sgResponse = await fetch('https://api.sendgrid.com/v3/mail/send', {
         method: 'POST',
         headers: {
-          'Authorization': \`Bearer \${sendgridKey}\`,
+          'Authorization': `Bearer ${sendgridKey}`,
           'Content-Type': 'application/json'
         },
         body: JSON.stringify({
