@@ -16,7 +16,7 @@ Then visit `http://localhost:8080` in your browser.
 
 ## Deployment & Hosting (Cloudflare Pages)
 
-This site is structured to be deployed using **Cloudflare Pages**. This allows us to use a serverless function to securely hide your Zapier Webhook URL from bots, while taking advantage of Cloudflare's built-in bot protection.
+This site is structured to be deployed using **Cloudflare Pages**. This allows us to use a serverless function to securely hide your Google Apps Script Webhook URL from bots, while taking advantage of Cloudflare's built-in bot protection.
 
 ### How to Deploy
 1. Create a free account on [Cloudflare](https://dash.cloudflare.com/).
@@ -32,25 +32,7 @@ The form submits to a secure Cloudflare Function (`/functions/api/submit.js`), w
 #### Step 1: Set up Google Sheets (No Zapier required)
 1. Create a new Google Sheet.
 2. Click **Extensions > Apps Script**.
-3. Paste the following code:
-```javascript
-function doPost(e) {
-  try {
-    var data = JSON.parse(e.postData.contents);
-    var sheet = SpreadsheetApp.getActiveSpreadsheet().getActiveSheet();
-    var timestamp = new Date();
-    var formType = data.form_type || 'consultation';
-    
-    sheet.appendRow([timestamp, formType, data.name || '', data.email || '', data.message || '', data.github_url || '']);
-    
-    return ContentService.createTextOutput(JSON.stringify({"success": true}))
-      .setMimeType(ContentService.MimeType.JSON);
-  } catch(error) {
-    return ContentService.createTextOutput(JSON.stringify({"error": error.toString()}))
-      .setMimeType(ContentService.MimeType.JSON);
-  }
-}
-```
+3. Copy the entire contents of `google-apps-script.js` from this repository and paste it into the editor.
 4. Click **Deploy > New deployment**. Select **Web app**.
 5. Set "Execute as" to **Me** and "Who has access" to **Anyone**.
 6. Click **Deploy** and copy the **Web app URL**.

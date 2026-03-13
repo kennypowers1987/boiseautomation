@@ -2,12 +2,12 @@ import { getEmailTemplate } from '../_emailTemplate.js';
 
 export async function onRequestPost(context) {
   // Grab configuration from Cloudflare Environment Variables
-  const zapierUrl = context.env.ZAPIER_WEBHOOK_URL;
+  const googleScriptUrl = context.env.GOOGLE_SCRIPT_URL;
   const sendgridKey = context.env.SENDGRID_API_KEY;
   const sendgridFrom = context.env.SENDGRID_FROM_EMAIL; // e.g., hello@boiseautomation.com
 
-  if (!zapierUrl) {
-    return new Response(JSON.stringify({ error: "ZAPIER_WEBHOOK_URL is not configured in Cloudflare." }), {
+  if (!googleScriptUrl) {
+    return new Response(JSON.stringify({ error: "GOOGLE_SCRIPT_URL is not configured in Cloudflare." }), {
       status: 500,
       headers: { "Content-Type": "application/json" }
     });
@@ -17,14 +17,14 @@ export async function onRequestPost(context) {
     // Parse the JSON data sent from the frontend
     const requestData = await context.request.json();
 
-    // 1. Forward the data to Zapier
-    const zapierResponse = await fetch(zapierUrl, {
+    // 1. Forward the data to Google Apps Script
+    const googleResponse = await fetch(googleScriptUrl, {
       method: 'POST',
       body: JSON.stringify(requestData)
     });
 
-    if (!zapierResponse.ok) {
-      throw new Error(`Zapier responded with status: ${zapierResponse.status}`);
+    if (!googleResponse.ok) {
+      throw new Error(`Google Script responded with status: ${googleResponse.status}`);
     }
 
     // 2. Send branded auto-reply via SendGrid (if configured)
