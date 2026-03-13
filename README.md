@@ -59,7 +59,7 @@ function doPost(e) {
 1. Go to **SendGrid** and generate a new API key with Mail Send permissions. Ensure you have a verified Sender Identity.
 2. Go to your Cloudflare Pages project settings: **Settings** -> **Environment variables**.
 3. Add the following variables:
-   * **`ZAPIER_WEBHOOK_URL`**: *(Paste your Google Apps Script Web app URL here)*
+   * **`GOOGLE_SCRIPT_URL`**: *(Paste your Google Apps Script Web app URL here)*
    * **`SENDGRID_API_KEY`**: *(Paste your SendGrid API key here)*
    * **`SENDGRID_FROM_EMAIL`**: *(Paste your verified SendGrid email here, e.g., hello@boiseautomation.com)*
 4. Click **Save** and trigger a new deployment in Cloudflare so the variables take effect.
@@ -78,6 +78,5 @@ Once your site is running through Cloudflare, enable bot protection:
 
 Before launching or driving traffic to this site, you need to update the following placeholder elements in `index.html`:
 
-- [ ] **Contact Form Embed:** Replace the placeholder text in the "Interactive Scheduling Block" (around line 256) with your actual Calendly or SavvyCal embed code.
 - [ ] **Social Links:** Update the `href` attribute in the footer for LinkedIn.
 - [ ] **Custom Domain Setup:** Add your custom domain (e.g., `boiseautomation.com`) in Cloudflare Pages and update your DNS records.
